@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fiókom | Samson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Oswald:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="index.html">SAM<span>SON</span></a>
+        <nav>
+          <a href="index.html">Kezdőlap</a>
+          <a href="index.html#foglaltsag">Foglaltság</a>
+          <a class="active" href="fiok.html" data-when-member>Fiókom</a>
+          <a class="btn btn-ghost" href="#" data-logout>Kilépés</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="page-hero">
+      <div class="container">
+        <h1 class="page-title">Szia, <span data-member-name>tag</span></h1>
+        <p class="lead">Innen jelölheted, hogy bent vagy-e a teremben.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 0">
+      <div class="container split" data-account>
+        <article class="panel">
+          <h3>Tagságod</h3>
+          <div class="info-row"><span>Csomag</span><strong data-plan></strong></div>
+          <div class="info-row"><span>E-mail</span><strong data-email></strong></div>
+          <div class="info-row"><span>Vásárlás</span><strong data-since></strong></div>
+          <p class="lead" style="margin-top: 16px" data-in-gym></p>
+          <button class="btn btn-primary" type="button" data-checkin onclick="Samson.checkin()">Belépés a terembe</button>
+        </article>
+        <aside class="occupancy-card" style="margin: 0; max-width: none">
+          <h2>Jelenleg a teremben</h2>
+          <div class="occ-number"><span data-occ-count>0</span> / <span data-occ-cap>80</span></div>
+          <div class="bar"><i data-occ-bar></i></div>
+          <span data-occ-status class="status-pill status-ok">Van hely</span>
+          <p class="lead" style="margin: 12px 0 0">
+            Ha belépsz a terembe, a nyilvános szám eggyel nő. Kilépéskor csökken.
+          </p>
+        </aside>
+      </div>
+    </section>
+    <script src="js/app.js"></script>
+  </body>
+</html>

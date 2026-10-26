@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Belépés | Samson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Oswald:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="index.html">SAM<span>SON</span></a>
+        <nav>
+          <a href="index.html">Kezdőlap</a>
+          <a href="index.html#foglaltsag">Foglaltság</a>
+          <a href="index.html#arak">Árak</a>
+          <a class="active" href="belepes.html">Belépés</a>
+          <a class="btn btn-primary" href="tagsag.html">Tagság vásárlása</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="page-hero">
+      <div class="container">
+        <h1 class="page-title">Tag belépés</h1>
+        <p class="lead">Csak az tud belépni, aki már megvásárolta a tagságot.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 0">
+      <div class="container split">
+        <form class="panel" id="login-form">
+          <div id="login-alert" class="alert"></div>
+          <label>E-mail
+            <input name="email" type="email" required />
+          </label>
+          <label>Jelszó
+            <input name="password" type="password" required />
+          </label>
+          <button class="btn btn-primary btn-block" type="submit">Belépés</button>
+          <p class="lead" style="margin: 0">Nincs még tagságod? <a href="tagsag.html" style="color: var(--orange)">Vásárolj egyet</a></p>
+        </form>
+        <aside class="occupancy-card" style="margin: 0; max-width: none">
+          <h2>Jelenleg a teremben</h2>
+          <div class="occ-number"><span data-occ-count>0</span> / <span data-occ-cap>80</span></div>
+          <div class="bar"><i data-occ-bar></i></div>
+          <span data-occ-status class="status-pill status-ok">Van hely</span>
+        </aside>
+      </div>
+    </section>
+    <script src="js/app.js"></script>
+  </body>
+</html>

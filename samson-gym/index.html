@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Samson Edzőterem | Budapest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Oswald:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="index.html">SAM<span>SON</span></a>
+        <nav>
+          <a class="active" href="index.html">Kezdőlap</a>
+          <a href="index.html#foglaltsag">Foglaltság</a>
+          <a href="index.html#arak">Árak</a>
+          <a href="belepes.html" data-when-guest>Belépés</a>
+          <a href="fiok.html" data-when-member style="display: none">Fiókom</a>
+          <a class="btn btn-primary" href="tagsag.html" data-when-guest>Tagság vásárlása</a>
+          <a class="btn btn-ghost" href="#" data-when-member data-logout style="display: none">Kilépés</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container">
+        <h1>Erő. Fegyelem. Samson.</h1>
+        <p>
+          Budapest egyik edzőterme, ahol a tagságot online megveszed, belépsz a
+          fiókodba, és bárki megnézheti, hányan vannak éppen bent.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="tagsag.html">Tagság vásárlása</a>
+          <a class="btn btn-ghost" href="belepes.html">Tag belépés</a>
+        </div>
+        <div class="occupancy-card" id="foglaltsag">
+          <h2>Jelenleg a teremben</h2>
+          <div class="occ-number"><span data-occ-count>0</span> / <span data-occ-cap>80</span></div>
+          <div class="bar"><i data-occ-bar></i></div>
+          <span data-occ-status class="status-pill status-ok">Van hely</span>
+          <p class="lead" style="margin: 12px 0 0">A szám nyilvános — belépés nélkül is látható.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Belépés vagy vásárlás</h2>
+        <p class="lead">
+          Extra szekció: ha már vettél tagságot, lépj be. Ha még nem, vedd meg
+          online, forintban.
+        </p>
+        <div class="split">
+          <article class="panel">
+            <h3>Már tag vagy?</h3>
+            <p class="lead">
+              Csak az juthat be a fiókba, aki már megvásárolta a tagságot.
+              Bent jelölheted, hogy a teremben vagy — ettől nő a foglaltság.
+            </p>
+            <a class="btn btn-ghost" href="belepes.html">Belépés a fiókba</a>
+          </article>
+          <article class="panel accent">
+            <h3>Még nincs tagságod?</h3>
+            <p class="lead" style="color: #fff">
+              Válassz havi, negyedéves vagy éves bérletet, fizess online, és
+              rögtön beléphetsz.
+            </p>
+            <a class="btn btn-ghost" href="tagsag.html" style="border-color: #fff">Tagság vásárlása</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="arak" style="padding-top: 0">
+      <div class="container">
+        <h2>Tagságok</h2>
+        <p class="lead">Árak bruttó forintban, Budapesten érvényesek.</p>
+        <div class="plans">
+          <article class="plan">
+            <h3>Havi</h3>
+            <div class="price">12 900 Ft</div>
+            <ul>
+              <li>Korlátlan belépés</li>
+              <li>Öltöző és zuhanyzó</li>
+              <li>Foglaltság követése</li>
+            </ul>
+            <a class="btn btn-primary btn-block" href="tagsag.html">Megveszem</a>
+          </article>
+          <article class="plan featured">
+            <h3>Negyedéves</h3>
+            <div class="price">32 900 Ft</div>
+            <ul>
+              <li>3 hónap egyben</li>
+              <li>1 vendégnap / hónap</li>
+              <li>Prioritás csúcsidőben</li>
+            </ul>
+            <a class="btn btn-primary btn-block" href="tagsag.html">Megveszem</a>
+          </article>
+          <article class="plan">
+            <h3>Éves</h3>
+            <div class="price">99 900 Ft</div>
+            <ul>
+              <li>12 hónap</li>
+              <li>Fagyasztás 14 napra</li>
+              <li>Nyitott edzésterv</li>
+            </ul>
+            <a class="btn btn-primary btn-block" href="tagsag.html">Megveszem</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 0">
+      <div class="container hours">
+        <article class="panel">
+          <h3>Nyitvatartás</h3>
+          <div class="info-row"><span>Hétfő – Péntek</span><strong>06:00 – 22:00</strong></div>
+          <div class="info-row"><span>Szombat</span><strong>08:00 – 20:00</strong></div>
+          <div class="info-row"><span>Vasárnap</span><strong>08:00 – 18:00</strong></div>
+        </article>
+        <article class="panel">
+          <h3>Elérhetőség</h3>
+          <div class="info-row"><span>Cím</span><strong>1065 Budapest, Samson utca 12.</strong></div>
+          <div class="info-row"><span>Telefon</span><strong>+36 1 555 1200</strong></div>
+          <div class="info-row"><span>E-mail</span><strong>hello@samsongym.hu</strong></div>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container footer-grid">
+        <div>SAMSON Edzőterem · Budapest</div>
+        <div>Ez egy demó oldal: a fizetés és a belépés a böngészőben tárolódik.</div>
+      </div>
+    </footer>
+    <script src="js/app.js"></script>
+  </body>
+</html>

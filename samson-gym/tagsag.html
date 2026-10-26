@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tagság vásárlása | Samson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Oswald:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="index.html">SAM<span>SON</span></a>
+        <nav>
+          <a href="index.html">Kezdőlap</a>
+          <a href="index.html#foglaltsag">Foglaltság</a>
+          <a href="index.html#arak">Árak</a>
+          <a href="belepes.html" data-when-guest>Belépés</a>
+          <a href="fiok.html" data-when-member style="display: none">Fiókom</a>
+          <a class="btn btn-primary" href="tagsag.html">Tagság vásárlása</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="page-hero">
+      <div class="container">
+        <h1 class="page-title">Online tagság</h1>
+        <p class="lead">
+          Vásárolj tagságot forintban. A vásárlás után azonnal beléphetsz a
+          fiókodba.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 0">
+      <div class="container split">
+        <form class="panel" id="buy-form">
+          <div id="buy-alert" class="alert"></div>
+          <label>Teljes név
+            <input name="name" required placeholder="Kovács Anna" />
+          </label>
+          <label>E-mail
+            <input name="email" type="email" required placeholder="anna@email.hu" />
+          </label>
+          <label>Jelszó a belépéshez
+            <input name="password" type="password" required minlength="4" />
+          </label>
+          <label>Csomag
+            <select name="plan" required>
+              <option value="havi">Havi — 12 900 Ft</option>
+              <option value="negyedeves">Negyedéves — 32 900 Ft</option>
+              <option value="eves">Éves — 99 900 Ft</option>
+            </select>
+          </label>
+          <label>Kártyaszám (demó)
+            <input name="card" required placeholder="ACCT-000015" maxlength="19" />
+          </label>
+          <button class="btn btn-primary btn-block" type="submit">Fizetés és tagság</button>
+          <p class="lead" style="margin: 0">Már van tagságod? <a href="belepes.html" style="color: var(--orange)">Lépj be</a></p>
+        </form>
+        <aside class="panel">
+          <h3>Mit kapsz?</h3>
+          <div class="info-row"><span>Helyszín</span><strong>Budapest, Samson utca 12.</strong></div>
+          <div class="info-row"><span>Belépés</span><strong>Csak vásárlás után</strong></div>
+          <div class="info-row"><span>Foglaltság</span><strong>Nyilvános mindenkinek</strong></div>
+          <p class="lead" style="margin-top: 18px">
+            A fizetés ezen a demón nem megy bankhoz: a tagság a böngésződben
+            jön létre, és azzal tudsz belépni.
+          </p>
+        </aside>
+      </div>
+    </section>
+    <script src="js/app.js"></script>
+  </body>
+</html>
