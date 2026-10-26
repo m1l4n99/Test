@@ -3,56 +3,106 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Fiókom | Samson</title>
+    <meta name="theme-color" content="#0a0a0b" />
+    <meta name="description" content="Samson Gym fiókod: digitális tagkártya, becsekkolás és bérletadatok." />
+    <title>Fiókom | Samson Gym</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Oswald:wght@500;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.css" />
+    <script src="js/app.js" defer></script>
   </head>
   <body>
-    <header class="site-header">
+    <header class="site-header solid" data-header>
       <div class="container header-inner">
-        <a class="logo" href="index.html">SAM<span>SON</span></a>
-        <nav>
-          <a href="index.html">Kezdőlap</a>
-          <a href="index.html#foglaltsag">Foglaltság</a>
-          <a class="active" href="fiok.html" data-when-member>Fiókom</a>
-          <a class="btn btn-ghost" href="#" data-logout>Kilépés</a>
+        <a class="logo" href="index.html" aria-label="Samson Gym kezdőlap">
+          <span class="logo-mark" aria-hidden="true">S</span>Samson<span class="logo-accent">Gym</span>
+        </a>
+        <a class="nav-live" href="index.html#elo" aria-label="Élő foglaltság">
+          <i class="dot" aria-hidden="true"></i><strong data-occ-count>20</strong><span class="nav-live-text">fő bent</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-label="Menü megnyitása" aria-expanded="false" aria-controls="main-nav" data-nav-toggle>
+          <span></span><span></span>
+        </button>
+        <nav id="main-nav" class="main-nav" aria-label="Fő navigáció">
+          <a href="index.html#elo">Élő foglaltság</a>
+          <a href="index.html#rolunk">Rólunk</a>
+          <a href="tagsag.html">Bérletek</a>
+          <a href="fiok.html" aria-current="page">Fiókom</a>
+          <button class="btn btn-ghost btn-sm" type="button" data-logout>Kijelentkezés</button>
         </nav>
       </div>
     </header>
 
-    <section class="page-hero">
+    <main class="page">
       <div class="container">
-        <h1 class="page-title">Szia, <span data-member-name>tag</span></h1>
-        <p class="lead">Innen jelölheted, hogy bent vagy-e a teremben.</p>
-      </div>
-    </section>
+        <div class="page-head">
+          <span class="eyebrow">Fiókom</span>
+          <h1>Szia, <span class="text-orange" data-acc-first>tag</span>!</h1>
+          <p>Itt találod a digitális tagkártyád, és innen tudsz be- és kicsekkolni a terembe.</p>
+        </div>
 
-    <section class="section" style="padding-top: 0">
-      <div class="container split" data-account>
-        <article class="panel">
-          <h3>Tagságod</h3>
-          <div class="info-row"><span>Csomag</span><strong data-plan></strong></div>
-          <div class="info-row"><span>E-mail</span><strong data-email></strong></div>
-          <div class="info-row"><span>Vásárlás</span><strong data-since></strong></div>
-          <p class="lead" style="margin-top: 16px" data-in-gym></p>
-          <button class="btn btn-primary" type="button" data-checkin onclick="Samson.checkin()">Belépés a terembe</button>
-        </article>
-        <aside class="occupancy-card" style="margin: 0; max-width: none">
-          <h2>Jelenleg a teremben</h2>
-          <div class="occ-number"><span data-occ-count>0</span> / <span data-occ-cap>80</span></div>
-          <div class="bar"><i data-occ-bar></i></div>
-          <span data-occ-status class="status-pill status-ok">Van hely</span>
-          <p class="lead" style="margin: 12px 0 0">
-            Ha belépsz a terembe, a nyilvános szám eggyel nő. Kilépéskor csökken.
-          </p>
-        </aside>
+        <div class="account-grid" data-account>
+          <article class="member-card" data-member-card data-active="true" aria-label="Digitális tagkártya">
+            <div class="mc-top">
+              <span class="mc-brand">Samson Gym</span>
+              <span class="mc-status" data-acc-status>Aktív tag</span>
+            </div>
+            <div class="mc-name" data-acc-name>—</div>
+            <div class="mc-meta">
+              <div><span>Tagszám</span><span style="font-size: 0.92rem; opacity: 1; letter-spacing: 0; text-transform: none" data-acc-id>—</span></div>
+              <div><span>Bérlet</span><span style="font-size: 0.92rem; opacity: 1; letter-spacing: 0; text-transform: none" data-acc-plan>—</span></div>
+              <div><span>Érvényes</span><span style="font-size: 0.92rem; opacity: 1; letter-spacing: 0; text-transform: none" data-acc-valid>—</span></div>
+            </div>
+            <div class="barcode" aria-hidden="true"></div>
+          </article>
+
+          <article class="card checkin-card">
+            <div>
+              <h3>Becsekkolás</h3>
+              <p class="checkin-state" style="margin-top: 8px">
+                <i class="dot off" data-checkin-dot aria-hidden="true"></i>
+                <span data-checkin-state>Jelenleg nem vagy bent</span>
+              </p>
+            </div>
+            <button class="checkin-btn" type="button" data-checkin data-in="false">
+              <svg class="i" data-checkin-icon-in viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" /><path d="m10 17 5-5-5-5" /><path d="M15 12H3" /></svg>
+              <svg class="i" data-checkin-icon-out hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><path d="m16 17 5-5-5-5" /><path d="M21 12H9" /></svg>
+              <span data-checkin-label>Becsekkolás</span>
+            </button>
+            <div class="timer-box" data-timer-box hidden>
+              <span class="muted">Edzésben eltöltött idő</span>
+              <span class="timer" data-acc-timer>00:00:00</span>
+            </div>
+            <div class="mini-live">
+              <div class="mini-live-label">
+                Most a teremben
+                <span class="count-wrap"><strong data-occ-count>20</strong><span class="floaters" data-occ-floaters></span></span>
+              </div>
+              <span class="status-pill" data-occ-status>Van bőven hely</span>
+            </div>
+          </article>
+
+          <article class="card span-2">
+            <div class="plan-info">
+              <div class="plan-info-main">
+                <h3>Bérleted</h3>
+                <p class="days-left" style="margin-top: 14px" data-acc-days>0 nap</p>
+                <p class="muted" style="margin-top: 6px" data-acc-days-sub>—</p>
+                <div class="progress" aria-hidden="true"><i data-acc-progress></i></div>
+              </div>
+              <a class="btn btn-primary btn-lg" href="tagsag.html" data-acc-buy>Bérletet veszek</a>
+            </div>
+          </article>
+        </div>
       </div>
-    </section>
-    <script src="js/app.js"></script>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-bottom" style="margin-top: 0; border: 0; padding-top: 0">
+        <span>© <span data-year>2026</span> Samson Gym · 1065 Budapest, Samson utca 12.</span>
+        <span>Demó: a fiók a böngészőben tárolódik.</span>
+      </div>
+    </footer>
   </body>
 </html>

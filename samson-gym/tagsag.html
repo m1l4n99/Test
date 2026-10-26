@@ -3,78 +3,156 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Tagság vásárlása | Samson</title>
+    <meta name="theme-color" content="#0a0a0b" />
+    <meta name="description" content="Vásárold meg Samson Gym bérleted online, pár kattintással." />
+    <title>Bérletvásárlás | Samson Gym</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Oswald:wght@500;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.css" />
+    <script src="js/app.js" defer></script>
   </head>
   <body>
-    <header class="site-header">
+    <header class="site-header solid" data-header>
       <div class="container header-inner">
-        <a class="logo" href="index.html">SAM<span>SON</span></a>
-        <nav>
-          <a href="index.html">Kezdőlap</a>
-          <a href="index.html#foglaltsag">Foglaltság</a>
-          <a href="index.html#arak">Árak</a>
-          <a href="belepes.html" data-when-guest>Belépés</a>
-          <a href="fiok.html" data-when-member style="display: none">Fiókom</a>
-          <a class="btn btn-primary" href="tagsag.html">Tagság vásárlása</a>
+        <a class="logo" href="index.html" aria-label="Samson Gym kezdőlap">
+          <span class="logo-mark" aria-hidden="true">S</span>Samson<span class="logo-accent">Gym</span>
+        </a>
+        <a class="nav-live" href="index.html#elo" aria-label="Élő foglaltság">
+          <i class="dot" aria-hidden="true"></i><strong data-occ-count>20</strong><span class="nav-live-text">fő bent</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-label="Menü megnyitása" aria-expanded="false" aria-controls="main-nav" data-nav-toggle>
+          <span></span><span></span>
+        </button>
+        <nav id="main-nav" class="main-nav" aria-label="Fő navigáció">
+          <a href="index.html#elo">Élő foglaltság</a>
+          <a href="index.html#rolunk">Rólunk</a>
+          <a href="tagsag.html" aria-current="page">Bérletek</a>
+          <a href="belepes.html#bejelentkezes" data-when-guest>Bejelentkezés</a>
+          <a href="fiok.html" data-when-member hidden>Fiókom</a>
+          <a class="btn btn-primary btn-sm" href="belepes.html#regisztracio" data-when-guest>Regisztráció</a>
+          <button class="btn btn-ghost btn-sm" type="button" data-when-member data-logout hidden>Kijelentkezés</button>
         </nav>
       </div>
     </header>
 
-    <section class="page-hero">
+    <main class="page">
       <div class="container">
-        <h1 class="page-title">Online tagság</h1>
-        <p class="lead">
-          Vásárolj tagságot forintban. A vásárlás után azonnal beléphetsz a
-          fiókodba.
-        </p>
-      </div>
-    </section>
+        <div class="page-head">
+          <span class="eyebrow">Online bérletvásárlás</span>
+          <h1>Vedd meg a bérleted pár kattintással.</h1>
+          <p>Fizetés után a bérlet azonnal aktív, és a fiókodból már be is csekkolhatsz.</p>
+        </div>
 
-    <section class="section" style="padding-top: 0">
-      <div class="container split">
-        <form class="panel" id="buy-form">
-          <div id="buy-alert" class="alert"></div>
-          <label>Teljes név
-            <input name="name" required placeholder="Kovács Anna" />
-          </label>
-          <label>E-mail
-            <input name="email" type="email" required placeholder="anna@email.hu" />
-          </label>
-          <label>Jelszó a belépéshez
-            <input name="password" type="password" required minlength="4" />
-          </label>
-          <label>Csomag
-            <select name="plan" required>
-              <option value="havi">Havi — 12 900 Ft</option>
-              <option value="negyedeves">Negyedéves — 32 900 Ft</option>
-              <option value="eves">Éves — 99 900 Ft</option>
-            </select>
-          </label>
-          <label>Kártyaszám (demó)
-            <input name="card" required placeholder="ACCT-000015" maxlength="19" />
-          </label>
-          <button class="btn btn-primary btn-block" type="submit">Fizetés és tagság</button>
-          <p class="lead" style="margin: 0">Már van tagságod? <a href="belepes.html" style="color: var(--orange)">Lépj be</a></p>
-        </form>
-        <aside class="panel">
-          <h3>Mit kapsz?</h3>
-          <div class="info-row"><span>Helyszín</span><strong>Budapest, Samson utca 12.</strong></div>
-          <div class="info-row"><span>Belépés</span><strong>Csak vásárlás után</strong></div>
-          <div class="info-row"><span>Foglaltság</span><strong>Nyilvános mindenkinek</strong></div>
-          <p class="lead" style="margin-top: 18px">
-            A fizetés ezen a demón nem megy bankhoz: a tagság a böngésződben
-            jön létre, és azzal tudsz belépni.
-          </p>
-        </aside>
+        <div class="checkout">
+          <form id="checkout-form" class="checkout-main" data-checkout novalidate>
+            <div class="gate" data-when-guest>
+              <p>A vásárláshoz <strong>fiók szükséges</strong> – ingyenes és pár másodperc.</p>
+              <div class="gate-actions">
+                <a class="btn btn-ghost btn-sm" href="belepes.html#bejelentkezes" data-gate-login>Bejelentkezés</a>
+                <a class="btn btn-primary btn-sm" href="belepes.html#regisztracio" data-gate-register>Regisztráció</a>
+              </div>
+            </div>
+
+            <section class="card">
+              <div class="step"><span class="step-num">1</span><h2>Válassz bérletet</h2></div>
+              <fieldset class="plan-options">
+                <legend class="sr-only">Bérlet típusa</legend>
+                <div class="plan-option">
+                  <input type="radio" name="plan" id="plan-napi" value="napi" />
+                  <label for="plan-napi">
+                    <span class="po-top"><span class="po-name">Napijegy</span><span class="po-radio" aria-hidden="true"></span></span>
+                    <span class="po-price">2 990 Ft</span>
+                    <span class="po-desc">Egy teljes nap, korlátlan belépéssel.</span>
+                  </label>
+                </div>
+                <div class="plan-option">
+                  <input type="radio" name="plan" id="plan-havi" value="havi" checked />
+                  <label for="plan-havi">
+                    <span class="po-top"><span class="po-name">Havi</span><span class="po-radio" aria-hidden="true"></span></span>
+                    <span class="po-price">12 900 Ft</span>
+                    <span class="po-desc">30 nap, kötöttség nélkül.</span>
+                  </label>
+                </div>
+                <div class="plan-option">
+                  <input type="radio" name="plan" id="plan-negyedeves" value="negyedeves" />
+                  <label for="plan-negyedeves">
+                    <span class="po-top"><span class="po-name">Negyedéves</span><span class="po-tag">−15%</span></span>
+                    <span class="po-price">32 900 Ft</span>
+                    <span class="po-desc">90 nap + 1 személyi edzés.</span>
+                  </label>
+                </div>
+                <div class="plan-option">
+                  <input type="radio" name="plan" id="plan-eves" value="eves" />
+                  <label for="plan-eves">
+                    <span class="po-top"><span class="po-name">Éves</span><span class="po-radio" aria-hidden="true"></span></span>
+                    <span class="po-price">99 900 Ft</span>
+                    <span class="po-desc">365 nap + korlátlan csoportos órák.</span>
+                  </label>
+                </div>
+              </fieldset>
+            </section>
+
+            <section class="card">
+              <div class="step"><span class="step-num">2</span><h2>Fizetési adatok</h2></div>
+              <div class="pay-layout">
+                <div class="pay-card" aria-hidden="true">
+                  <div class="pay-card-top"><span class="chip"></span><span>Samson<span class="text-orange">Pay</span></span></div>
+                  <div class="pay-card-number" data-card-number>•••• •••• •••• ••••</div>
+                  <div class="pay-card-bottom">
+                    <div><span>Kártyabirtokos</span><span style="font-size: 0.8rem; color: inherit" data-card-name>KÁRTYABIRTOKOS</span></div>
+                    <div><span>Lejárat</span><span style="font-size: 0.8rem; color: inherit" data-card-exp>HH/ÉÉ</span></div>
+                  </div>
+                </div>
+                <div class="form">
+                  <div class="field">
+                    <label for="holder">Kártyán szereplő név</label>
+                    <input class="input" id="holder" name="holder" type="text" autocomplete="cc-name" placeholder="Kovács Anna" />
+                  </div>
+                  <div class="field">
+                    <label for="cardnumber">Kártyaszám</label>
+                    <input class="input" id="cardnumber" name="cardnumber" type="text" inputmode="numeric" autocomplete="cc-number" placeholder="4242 4242 4242 4242" />
+                  </div>
+                  <div class="field-row">
+                    <div class="field">
+                      <label for="exp">Lejárat</label>
+                      <input class="input" id="exp" name="exp" type="text" inputmode="numeric" autocomplete="cc-exp" placeholder="HH/ÉÉ" />
+                    </div>
+                    <div class="field">
+                      <label for="cvc">CVC</label>
+                      <input class="input" id="cvc" name="cvc" type="text" inputmode="numeric" autocomplete="cc-csc" placeholder="123" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </form>
+
+          <aside class="card summary" aria-label="Rendelés összesítő">
+            <h3>Összesítő</h3>
+            <p class="card-sub">Ellenőrizd a rendelésed</p>
+            <div class="summary-row"><span>Bérlet</span><strong data-sum-name>Havi bérlet</strong></div>
+            <div class="summary-row"><span>Időtartam</span><strong data-sum-duration>30 nap</strong></div>
+            <div class="summary-row"><span>Érvényes eddig</span><strong data-sum-valid>—</strong></div>
+            <div class="summary-total"><span>Fizetendő</span><strong data-sum-total>12 900 Ft</strong></div>
+            <div class="alert" role="alert" data-checkout-alert hidden style="margin-bottom: 14px"></div>
+            <button class="btn btn-primary btn-lg btn-block" type="submit" form="checkout-form" data-pay>
+              Fizetés · <span data-pay-amount>12 900 Ft</span>
+            </button>
+            <p class="secure">
+              <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
+              <span>Demó fizetés – kártyát nem terhelünk. Tesztkártya: 4242 4242 4242 4242, bármilyen jövőbeli dátum és CVC.</span>
+            </p>
+          </aside>
+        </div>
       </div>
-    </section>
-    <script src="js/app.js"></script>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-bottom" style="margin-top: 0; border: 0; padding-top: 0">
+        <span>© <span data-year>2026</span> Samson Gym · 1065 Budapest, Samson utca 12.</span>
+        <span>Demó: a vásárlás a böngészőben tárolódik.</span>
+      </div>
+    </footer>
   </body>
 </html>

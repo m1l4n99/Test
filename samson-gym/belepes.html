@@ -3,57 +3,119 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Belépés | Samson</title>
+    <meta name="theme-color" content="#0a0a0b" />
+    <meta name="description" content="Jelentkezz be vagy regisztrálj a Samson Gym fiókodba." />
+    <title>Bejelentkezés és regisztráció | Samson Gym</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Oswald:wght@500;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.css" />
+    <script src="js/app.js" defer></script>
   </head>
   <body>
-    <header class="site-header">
+    <header class="site-header solid" data-header>
       <div class="container header-inner">
-        <a class="logo" href="index.html">SAM<span>SON</span></a>
-        <nav>
-          <a href="index.html">Kezdőlap</a>
-          <a href="index.html#foglaltsag">Foglaltság</a>
-          <a href="index.html#arak">Árak</a>
-          <a class="active" href="belepes.html">Belépés</a>
-          <a class="btn btn-primary" href="tagsag.html">Tagság vásárlása</a>
+        <a class="logo" href="index.html" aria-label="Samson Gym kezdőlap">
+          <span class="logo-mark" aria-hidden="true">S</span>Samson<span class="logo-accent">Gym</span>
+        </a>
+        <a class="nav-live" href="index.html#elo" aria-label="Élő foglaltság">
+          <i class="dot" aria-hidden="true"></i><strong data-occ-count>20</strong><span class="nav-live-text">fő bent</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-label="Menü megnyitása" aria-expanded="false" aria-controls="main-nav" data-nav-toggle>
+          <span></span><span></span>
+        </button>
+        <nav id="main-nav" class="main-nav" aria-label="Fő navigáció">
+          <a href="index.html#elo">Élő foglaltság</a>
+          <a href="index.html#rolunk">Rólunk</a>
+          <a href="tagsag.html">Bérletek</a>
+          <a href="belepes.html" aria-current="page">Fiók</a>
         </nav>
       </div>
     </header>
 
-    <section class="page-hero">
-      <div class="container">
-        <h1 class="page-title">Tag belépés</h1>
-        <p class="lead">Csak az tud belépni, aki már megvásárolta a tagságot.</p>
-      </div>
-    </section>
-
-    <section class="section" style="padding-top: 0">
-      <div class="container split">
-        <form class="panel" id="login-form">
-          <div id="login-alert" class="alert"></div>
-          <label>E-mail
-            <input name="email" type="email" required />
-          </label>
-          <label>Jelszó
-            <input name="password" type="password" required />
-          </label>
-          <button class="btn btn-primary btn-block" type="submit">Belépés</button>
-          <p class="lead" style="margin: 0">Nincs még tagságod? <a href="tagsag.html" style="color: var(--orange)">Vásárolj egyet</a></p>
-        </form>
-        <aside class="occupancy-card" style="margin: 0; max-width: none">
-          <h2>Jelenleg a teremben</h2>
-          <div class="occ-number"><span data-occ-count>0</span> / <span data-occ-cap>80</span></div>
-          <div class="bar"><i data-occ-bar></i></div>
-          <span data-occ-status class="status-pill status-ok">Van hely</span>
+    <main class="page">
+      <div class="container auth-wrap" data-auth data-active="login">
+        <aside class="auth-aside">
+          <img src="images/hero.png" alt="" />
+          <span class="eyebrow-pill" style="width: fit-content"><i class="dot" aria-hidden="true"></i>Most <strong data-occ-count>20</strong> ember edz</span>
+          <h2>Üdv a <span class="text-orange">Samson</span> csapatban.</h2>
+          <p>Egy fiók, és minden kéznél van: bérletvásárlás, digitális tagkártya és egy gombnyomásos becsekkolás.</p>
         </aside>
+
+        <section class="auth-card" aria-label="Fiók">
+          <div class="tabs" role="tablist" aria-label="Bejelentkezés vagy regisztráció">
+            <button class="tab" type="button" role="tab" id="tab-login" aria-controls="login-form" aria-selected="true" data-tab="login">Bejelentkezés</button>
+            <button class="tab" type="button" role="tab" id="tab-register" aria-controls="register-form" aria-selected="false" tabindex="-1" data-tab="register">Regisztráció</button>
+          </div>
+
+          <form id="login-form" class="form tab-panel" role="tabpanel" aria-labelledby="tab-login" data-panel="login">
+            <h1 class="form-title">Jó újra látni!</h1>
+            <p class="form-sub">Jelentkezz be a fiókodba a becsekkoláshoz.</p>
+            <div class="alert" role="alert" data-alert hidden></div>
+            <div class="field">
+              <label for="login-email">E-mail cím</label>
+              <input class="input" id="login-email" name="email" type="email" autocomplete="email" placeholder="anna@email.hu" required />
+            </div>
+            <div class="field">
+              <label for="login-password">Jelszó</label>
+              <div class="input-wrap">
+                <input class="input" id="login-password" name="password" type="password" autocomplete="current-password" placeholder="••••••••" required />
+                <button class="pass-toggle" type="button" aria-label="Jelszó megjelenítése" aria-pressed="false" data-toggle-pass>
+                  <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" /><circle cx="12" cy="12" r="3" /></svg>
+                </button>
+              </div>
+            </div>
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Bejelentkezés</button>
+            <p class="form-foot">Még nincs fiókod? <a class="link" href="#regisztracio" data-switch="register">Regisztrálj ingyen</a></p>
+          </form>
+
+          <form id="register-form" class="form tab-panel" role="tabpanel" aria-labelledby="tab-register" data-panel="register" hidden>
+            <h1 class="form-title">Hozd létre a fiókod</h1>
+            <p class="form-sub">Ingyenes, és kevesebb mint egy perc.</p>
+            <div class="alert" role="alert" data-alert hidden></div>
+            <div class="field">
+              <label for="reg-name">Teljes név</label>
+              <input class="input" id="reg-name" name="name" type="text" autocomplete="name" placeholder="Kovács Anna" required />
+            </div>
+            <div class="field">
+              <label for="reg-email">E-mail cím</label>
+              <input class="input" id="reg-email" name="email" type="email" autocomplete="email" placeholder="anna@email.hu" required />
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="reg-password">Jelszó</label>
+                <div class="input-wrap">
+                  <input class="input" id="reg-password" name="password" type="password" autocomplete="new-password" minlength="8" placeholder="Min. 8 karakter" required aria-describedby="strength-label" />
+                  <button class="pass-toggle" type="button" aria-label="Jelszó megjelenítése" aria-pressed="false" data-toggle-pass>
+                    <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" /><circle cx="12" cy="12" r="3" /></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="field">
+                <label for="reg-password2">Jelszó újra</label>
+                <input class="input" id="reg-password2" name="password2" type="password" autocomplete="new-password" placeholder="Ismételd meg" required />
+              </div>
+            </div>
+            <div>
+              <div class="strength" data-strength data-score="0" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+              <p class="hint" id="strength-label" data-strength-label style="margin-top: 8px">Legalább 8 karakter, kis- és nagybetű, szám.</p>
+            </div>
+            <label class="checkbox">
+              <input type="checkbox" name="terms" required />
+              <span>Elfogadom a házirendet és az adatkezelési tájékoztatót.</span>
+            </label>
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Fiók létrehozása</button>
+            <p class="form-foot">Már van fiókod? <a class="link" href="#bejelentkezes" data-switch="login">Jelentkezz be</a></p>
+          </form>
+        </section>
       </div>
-    </section>
-    <script src="js/app.js"></script>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-bottom" style="margin-top: 0; border: 0; padding-top: 0">
+        <span>© <span data-year>2026</span> Samson Gym · 1065 Budapest, Samson utca 12.</span>
+        <span>Demó: a fiókok a böngészőben tárolódnak.</span>
+      </div>
+    </footer>
   </body>
 </html>
